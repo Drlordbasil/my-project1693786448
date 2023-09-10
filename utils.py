@@ -5,6 +5,7 @@ from bs4 import BeautifulSoup
 import pandas as pd
 import numpy as np
 
+
 def scrape_data(url):
     """
     Scrapes real estate data from a given URL using BeautifulSoup and Requests libraries.
@@ -14,6 +15,7 @@ def scrape_data(url):
     if response.status_code == 200:
         soup = BeautifulSoup(response.content, 'html.parser')
         return soup
+
 
 def extract_features(soup):
     """
@@ -35,6 +37,7 @@ def extract_features(soup):
     df = pd.DataFrame(property_features)
     return df
 
+
 def process_data(df):
     """
     Preprocesses and cleans the data, and performs any necessary feature engineering.
@@ -47,6 +50,7 @@ def process_data(df):
     # Perform more data processing as needed
 
     return df
+
 
 def train_model(df):
     """
@@ -67,6 +71,8 @@ def train_model(df):
     return model
 
 # The following functions can be implemented in a separate file for Flask or Click-based user interface.
+
+
 def get_prediction(model, input_features):
     """
     Uses the trained model to generate price predictions for a given set of input features.
@@ -80,6 +86,7 @@ def get_prediction(model, input_features):
     predictions = model.predict(processed_input)
 
     return predictions
+
 
 def main():
     # Scrape the data from a specific URL
